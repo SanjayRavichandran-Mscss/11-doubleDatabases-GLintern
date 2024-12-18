@@ -1,0 +1,57 @@
+TASK - 11 - Student Data Synchronization System- WORKING WITH DOUBLE DATABASES
+
+DATABASE NAME - DB1 : student_db1 
+DATABASE NAME - DB2 : student_db2
+
+This project is designed to manage and synchronize student records between two MySQL databases (Database1 and Database2) using Node.js. It includes the following functionalities:
+
+Student Registration: Allows new student records to be added to Database1.
+Compare and Sync: Compares student data in Database1 and Database2 for a given aadhar_number. If discrepancies are found, it updates Database2 to match Database1.
+Insert Missing Records: Automatically inserts the student record into Database2 if it doesn’t exist.
+Field Comparison: Ensures only mismatched fields are updated, optimizing performance.
+RESTful API: Provides endpoints for registration (/register) and synchronization (/compare-sync-student).
+
+
+student registration EndPoint : http://localhost:7000/api/register
+method : POST
+
+JSON FORMAT :
+
+{
+  "aadhar_number": "123456789333",
+  "student_name": "siva",
+  "mobile_number": "78887689999",
+  "college": "KGCAS",
+  "course": "BSC ct",
+  "city": "coimbatore",
+  "state": "Tamilnadu",
+  "country": "India"
+}
+________________________________________________________________________________
+
+Fetch-store-student Endpoint : http://localhost:7000/api/fetch-store-student
+
+here, fetch from DB1 and store to DB2.
+
+method : POST
+
+JSON FORMAT : 
+
+{
+  "aadhar_number": "123456789333"
+}
+
+______________________________________________________________________________________
+
+
+compare-sync-student Endpoint : http://localhost:7000/api/compare-sync-student
+
+here , compare both the databases , if it is matches means give response "both DB are same" otherwise DB2 updated with the datas of DB1.
+
+method :POST
+
+JSON FORMAT :
+
+{
+    "aadhar_number": "123456789333"
+}
